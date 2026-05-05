@@ -37,7 +37,7 @@ export const reportFields: INodeProperties[] = [
     default: '',
     placeholder: 'rpt_01HY2ZABC123',
     description:
-      'The report ID returned by the "Run Analysis" operation, or read from a webhook payload.',
+      'The report ID returned by the "Run Analysis" operation, or read from a webhook payload',
     displayOptions: {
       show: { resource: ['report'], operation: ['get'] },
     },

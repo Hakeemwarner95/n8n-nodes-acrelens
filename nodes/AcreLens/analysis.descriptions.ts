@@ -2,16 +2,16 @@ import { INodeProperties } from 'n8n-workflow';
 
 const ANALYSIS_MODES = [
   {
-    name: 'Off-Grid (solar, water, septic, building codes)',
+    name: 'Off-Grid (Solar, Water, Septic, Building Codes)',
     value: 'off_grid',
   },
   {
-    name: 'Rural Residential (everyday liveability)',
+    name: 'Rural Residential (Everyday Liveability)',
     value: 'rural_residential',
   },
-  { name: 'Recreational (hunting, fishing, camping)', value: 'recreational' },
+  { name: 'Recreational (Hunting, Fishing, Camping)', value: 'recreational' },
   {
-    name: 'Investment (development potential, appreciation)',
+    name: 'Investment (Development Potential, Appreciation)',
     value: 'investment',
   },
 ];
@@ -39,8 +39,7 @@ export const analysisOperations: INodeProperties[] = [
         name: 'Run Analysis',
         value: 'create',
         action: 'Run a land analysis',
-        description:
-          'Kicks off a new analysis. Returns immediately with a report ID; the full report (~90s later) is fetched via "Get Report" or delivered to your webhook URL.',
+        description: 'Kicks off a new analysis. Returns immediately with a report ID; the full report (~90s later) is fetched via "Get Report" or delivered to your webhook URL.',
         routing: {
           request: {
             method: 'POST',
@@ -62,7 +61,7 @@ export const analysisFields: INodeProperties[] = [
     required: true,
     default: '',
     placeholder: '123 Cabin Rd, Taos, NM',
-    description: 'Full street address of the US property.',
+    description: 'Full street address of the US property',
     displayOptions: {
       show: { resource: ['analysis'], operation: ['create'] },
     },
@@ -74,7 +73,7 @@ export const analysisFields: INodeProperties[] = [
     type: 'options',
     required: true,
     default: 'NM',
-    description: '2-letter US state code.',
+    description: '2-letter US state code',
     options: US_STATES.map((c) => ({ name: c, value: c })),
     displayOptions: {
       show: { resource: ['analysis'], operation: ['create'] },
@@ -87,7 +86,7 @@ export const analysisFields: INodeProperties[] = [
     type: 'options',
     required: true,
     default: 'off_grid',
-    description: 'Which analytical lens to apply.',
+    description: 'Which analytical lens to apply',
     options: ANALYSIS_MODES,
     displayOptions: {
       show: { resource: ['analysis'], operation: ['create'] },
@@ -105,15 +104,6 @@ export const analysisFields: INodeProperties[] = [
     },
     options: [
       {
-        displayName: 'County',
-        name: 'county',
-        type: 'string',
-        default: '',
-        description:
-          'Optional but recommended — improves regulation/zoning research.',
-        routing: { send: { type: 'body', property: 'county' } },
-      },
-      {
         displayName: 'Acreage',
         name: 'acreage',
         type: 'number',
@@ -127,8 +117,17 @@ export const analysisFields: INodeProperties[] = [
         type: 'number',
         default: 0,
         typeOptions: { minValue: 0 },
-        description: 'Used for investment-mode value calculations.',
+        description: 'Used for investment-mode value calculations',
         routing: { send: { type: 'body', property: 'asking_price' } },
+      },
+      {
+        displayName: 'County',
+        name: 'county',
+        type: 'string',
+        default: '',
+        description:
+          'Optional but recommended — improves regulation/zoning research',
+        routing: { send: { type: 'body', property: 'county' } },
       },
       {
         displayName: 'Latitude',
@@ -136,7 +135,7 @@ export const analysisFields: INodeProperties[] = [
         type: 'number',
         default: 0,
         typeOptions: { minValue: -90, maxValue: 90 },
-        description: 'Skips geocoding when provided alongside Longitude.',
+        description: 'Skips geocoding when provided alongside Longitude',
         routing: { send: { type: 'body', property: 'lat' } },
       },
       {
@@ -154,7 +153,7 @@ export const analysisFields: INodeProperties[] = [
         default: '',
         placeholder: 'https://your-n8n.example.com/webhook/...',
         description:
-          'Optional. AcreLens POSTs the completed report to this URL (HMAC-signed). Pair with the AcreLens Trigger node for zero-polling pipelines.',
+          'Optional. AcreLens POSTs the completed report to this URL (HMAC-signed). Pair with the AcreLens Trigger node for zero-polling pipelines',
         routing: { send: { type: 'body', property: 'webhook_url' } },
       },
     ],

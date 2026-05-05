@@ -18,7 +18,7 @@ import {
 export class AcreLensApi implements ICredentialType {
   name = 'acreLensApi';
   displayName = 'AcreLens API';
-  documentationUrl = 'https://docs.acrelens.com/api/authentication';
+  documentationUrl = 'https://docs.acrelens.com';
   icon = 'file:acrelens.svg' as const;
 
   properties: INodeProperties[] = [

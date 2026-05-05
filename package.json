@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-acrelens",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "n8n community node for AcreLens — the B2B land-intelligence API. Run land analyses (off-grid / rural-residential / recreational / investment) on US property and receive completed reports via webhook.",
   "keywords": [
     "n8n-community-node-package",
@@ -23,7 +23,7 @@
     "url": "git+https://github.com/Hakeemwarner95/n8n-nodes-acrelens.git"
   },
   "engines": {
-    "node": ">=20.15"
+    "node": ">=22"
   },
   "main": "index.js",
   "scripts": {
